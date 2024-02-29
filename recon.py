@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Author: Aleksa Zatezalo
 Name: Recon.
@@ -8,6 +9,7 @@ Version: 1.0
 import requests
 from colorama import Fore, Back, Style
 
+requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 def format_text(title, item):
     """
@@ -38,3 +40,5 @@ def basic_get_request(url):
     print(format_text('r.headers is: ',r.headers))
     print(format_text('r.cookies is: ',r.cookies))
     print(format_text('r.text is: ',r.text))
+
+basic_get_request("https://192.168.201.113")
