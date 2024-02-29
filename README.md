@@ -8,4 +8,4 @@ This is a serise of scripts to help study for, and pass the OSWE exam by Offensi
 * Combine logical vulnerabilities to create a proof of concept on a web app
 * Exploit vulnerabilities by chaining them into complex attacks
 
-For more information about the course please see the website [here]([https://www.paloaltonetworks.com/cyberpedia/what-is-a-port-scan](https://www.offsec.com/courses/web-300/)https://www.offsec.com/courses/web-300/).
+For more information about the course please see the website [here]([https://www.paloaltonetworks.com/cyberpedia/what-is-a-port-scan].
