@@ -27,18 +27,24 @@ def format_text(title, item):
     text = Style.BRIGHT + Fore.RED + title + Fore.RESET + section_break + item + section_break
     return text
 
-def basic_get_request(url):
+def basic_get_request(url, proxy=None):
     """
     Performs a basic get request with no arguments to address url. Prints http(s) response
     to standard output. This function has no returns.
 
     String: url - the url of site you intend to perform a get resqust on. 
+    Proxies: a dictionary containing two keys (http, https) and the corrisponding proxy values.
     """
 
-    r = requests.get(url,verify=False)
+    if (proxy != None):
+        r = requests.get(url, verify=False, proxies=proxy)
+    else:
+        r = requests.get(url,verify=False)
+    
+    
     print(format_text('r.status_code is: ',r.status_code))
     print(format_text('r.headers is: ',r.headers))
     print(format_text('r.cookies is: ',r.cookies))
     print(format_text('r.text is: ',r.text))
-
-basic_get_request("https://192.168.201.113")
+    
+    return 0
