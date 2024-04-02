@@ -49,3 +49,7 @@ def basic_get_request(url, proxy=None):
     print(format_text('r.text is: ',r.text))
     
     return 0
+
+
+proxies = {'http':'http://127.0.0.1:8080','https':'http://127.0.0.1:8080'}
+basic_get_request("https://192.168.226.113:8443", aphu=proxies)
