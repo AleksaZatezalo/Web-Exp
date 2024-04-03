@@ -8,6 +8,7 @@ Version: 1.0
 """
 
 import requests
+import urllib3
 from colorama import Fore, Back, Style
 
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
@@ -50,6 +51,11 @@ def basic_get_request(url, proxy=None):
     
     return 0
 
-
-proxies = {'http':'http://127.0.0.1:8080','https':'http://127.0.0.1:8080'}
-basic_get_request("https://192.168.226.113:8443", aphu=proxies)
+def test_sqli(url, sqli):
+    """
+    Formats a URL, url, to contain SQLI payload, sqli. Sends the corresponding HTTP request.
+    """
+    
+    r = requests.get(url, params=sqli, verify=False)
+    print(format_text('r.headers is: ',r.headers))
+    print(format_text('r.text is: ',r.text))
