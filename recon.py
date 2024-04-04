@@ -51,11 +51,11 @@ def basic_get_request(url, proxy=None):
     
     return 0
 
-def test_sqli(url, sqli):
+def test_sqli(url, pay):
     """
-    Formats a URL, url, to contain SQLI payload, sqli. Sends the corresponding HTTP request.
+    Formats a URL, url, to contains a payload, pay. Sends the corresponding HTTP request.
     """
     
-    r = requests.get(url, params=sqli, verify=False)
+    r = requests.get(url, params=pay, verify=False)
     print(format_text('r.headers is: ',r.headers))
     print(format_text('r.text is: ',r.text))

