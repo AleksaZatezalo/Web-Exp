@@ -29,10 +29,19 @@ def revShellExec(url):
     """
     pass
 
+def getShellWindows(url, lhost, lport):
+    """
+    Gets a shell on target system, url, running managed engine.
+    Offers CLI on ip address, lhost, and port, lport. 
+    This exploit is specific to Windows.
+    """
+    pass
+
 def getShell(url, lhost, lport):
     """
     Gets a shell on target system, url, running managed engine.
     Offers CLI on ip address, lhost, and port, lport.
+    This exploit works on all systems.
     """
     pass
 
@@ -57,4 +66,7 @@ def main():
     # parser.add_argument('-t', '--target', default='192.168.1.203', help="specific IP")
     # parser.add_argument('-u', '--upload', help='upload file')
     # args = parser.parse_args()
+    pass
+
+if __name__ == '__main__':
     pass
