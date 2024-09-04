@@ -1,3 +1,10 @@
+"""
+Author: Aleksa Zatezalo.
+Date: September 2024.
+Title: Managed Engine RCE.
+Description: An RCE for the Manged Engine Web Application via SQL.
+"""
+
 import requests
 from colorama import Fore, Back, Style
 
