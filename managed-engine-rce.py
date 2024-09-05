@@ -10,8 +10,6 @@ import requests
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-
-
 def main():
 	if len(sys.argv) != 2:
 		print("(+) usage %s <target>" % sys.argv[0])
