@@ -2,7 +2,7 @@
 Author: Aleksa Zatezalo.
 Date: September 2024.
 Title: Managed Engine RCE.
-Description: An RCE for the Manged Engine Web Application via SQL.
+Description: An RCE for the Manged Engine Web Application via SQL. Coded to run on linux systems with msfvenom installed.
 """
 
 import sys
